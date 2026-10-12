@@ -1,0 +1,1657 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f5fb;
+    color: #252541;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+    color: #6652d9;
+}
+
+header p {
+    color: #73738b;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #2525410d;
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    font-size: 15px;
+    color: #73738b;
+}
+
+.stat-card p {
+    margin-bottom: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.task-section {
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #2525410d;
+}
+
+.task-section h2 {
+    margin-top: 0;
+}
+
+#taskForm {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#taskInput,
+#priority {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #dddded;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+#taskInput {
+    flex: 1;
+}
+
+button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 7px;
+    background: #6652d9;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #5140b8;
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eeeeF5;
+}
+
+.task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.task-details {
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.task-title {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.completed .task-title {
+    text-decoration: line-through;
+    color: #88889b;
+}
+
+.priority-label {
+    font-size: 12px;
+    color: #6652d9;
+}
+
+.delete-btn {
+    background: #ffe8e8;
+    color: #c03939;
+    padding: 8px 10px;
+}
+
+.delete-btn:hover {
+    background: #ffd5d5;
+}
+
+#emptyMessage {
+    text-align: center;
+    color: #88889b;
+    padding: 20px 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-card h3 {
+        font-size: 12px;
+    }
+
+    .stat-card p {
+        font-size: 23px;
+    }
+
+    .task-section {
+        padding: 16px;
+    }
+
+    #taskForm {
+        flex-direction: column;
+    }
+
+    #taskForm button {
+        width: 100%;
+    }
+}
+
+/* Task filter buttons */
+.task-filters {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #f0effa;
+    color: #5140b8;
+    border: 1px solid #e1def7;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #e3e0fa;
+}
+
+.filter-btn.active {
+    background: #6652d9;
+    color: white;
+    border-color: #6652d9;
+}
+
+.filter-btn:focus-visible {
+    outline: 2px solid #252541;
+    outline-offset: 3px;
+}
+
+/* Overall progress section */
+.progress-section {
+    background: white;
+    padding: 22px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #2525410d;
+}
+
+.progress-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.progress-heading h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+#progressPercent {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6652d9;
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    background: #e9e7f5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #6652d9;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+#progressText {
+    margin: 12px 0 0;
+    color: #73738b;
+    font-size: 14px;
+}
+
+
+.due-date {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #555;
+}
+
+.due-date.overdue {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+
+/* ===== FocusBoard: Modern Dashboard Theme ===== */
+
+body {
+    background: #f5f3ff;
+    color: #1e1b4b;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 30px 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+header h1 {
+    color: #6d28d9;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+header p {
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* Section headings */
+h2 {
+    color: #312e81;
+    font-size: 1.25rem;
+    margin-top: 0;
+}
+
+/* Dashboard statistics */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #e9e5ff;
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(49, 46, 129, 0.05);
+}
+
+.stat-card h3 {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.stat-card p {
+    color: #6d28d9;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Main sections */
+.progress-section,
+.task-section,
+.pomodoro-section {
+    background: #ffffff;
+    border: 1px solid #e9e5ff;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(49, 46, 129, 0.05);
+}
+
+/* Progress bar */
+.progress-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-heading h2 {
+    margin-bottom: 12px;
+}
+
+#progressPercent {
+    color: #6d28d9;
+    font-weight: 700;
+}
+
+.progress-track {
+    background: #ede9fe;
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+    border-radius: 999px;
+    height: 100%;
+    transition: width 0.35s ease;
+}
+
+#progressText {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="date"],
+select {
+    box-sizing: border-box;
+    min-width: 0;
+    width: 100%;
+    background: #faf9ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+    color: #1e1b4b;
+    font: inherit;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+}
+
+/* Buttons */
+button {
+    background: #6d28d9;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    padding: 11px 17px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: #5b21b6;
+    transform: translateY(-1px);
+}
+
+button:focus-visible {
+    outline: 3px solid #c4b5fd;
+    outline-offset: 3px;
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Task filters */
+.task-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background: #f3f0ff;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+}
+
+.filter-btn:hover {
+    background: #ede9fe;
+}
+
+.filter-btn.active {
+    background: #6d28d9;
+    border-color: #6d28d9;
+    color: #ffffff;
+}
+
+
+/* Task form */
+#taskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: stretch;
+}
+
+#taskForm label {
+    color: #4b5563;
+    font-size: 0.9rem;
+    margin-bottom: -8px;
+}
+
+#taskForm input,
+#taskForm select {
+    width: 100%;
+}
+
+#taskForm button {
+    width: 100%;
+}
+
+
+/* Task list */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #faf9ff;
+    border: 1px solid #ede9fe;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: #6d28d9;
+}
+
+.task-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.task-title {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.priority-label,
+.due-date {
+    font-size: 0.82rem;
+    color: #6b7280;
+}
+
+.due-date.overdue {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.task-item.completed .task-title {
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+#emptyMessage {
+    color: #9ca3af;
+    text-align: center;
+    padding: 18px;
+}
+
+/* Pomodoro timer */
+.pomodoro-section {
+    text-align: center;
+}
+
+#timerMode {
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.timer-display {
+    color: #6d28d9;
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+    margin: 16px 0 24px;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+#pauseTimer,
+#resetTimer {
+    background: #ede9fe;
+    color: #5b21b6;
+}
+
+#pauseTimer:hover,
+#resetTimer:hover {
+    background: #ddd6fe;
+}
+
+#switchTimer {
+    background: #312e81;
+}
+
+#switchTimer:hover {
+    background: #1e1b4b;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px 8px;
+        border-radius: 14px;
+    }
+
+    .stat-card h3 {
+        font-size: 0.78rem;
+    }
+
+    .stat-card p {
+        font-size: 1.6rem;
+    }
+
+    .progress-section,
+    .task-section,
+    .pomodoro-section {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    #taskForm {
+        grid-template-columns: 1fr;
+    }
+
+    #taskForm button {
+        grid-column: auto;
+    }
+
+    .task-item {
+        gap: 10px;
+        padding: 12px;
+    }
+}
+
+
+/* ===== FocusBoard Color Upgrade ===== */
+
+body {
+    background: linear-gradient(135deg, #f3e8ff, #eef2ff, #fdf2f8);
+    color: #252044;
+}
+
+/* Header */
+header h1 {
+    color: #7c3aed;
+    text-shadow: 0 2px 10px #7c3aed20;
+}
+
+header p {
+    color: #6b6485;
+}
+
+/* Statistics cards */
+.stat-card {
+    background: linear-gradient(145deg, #ffffff, #f5f0ff);
+    border: 1px solid #e4d7ff;
+    border-top: 4px solid #8b5cf6;
+    box-shadow: 0 8px 22px #6d28d914;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px #6d28d926;
+}
+
+.stat-card p {
+    color: #7c3aed;
+}
+
+/* Main content cards */
+.progress-section,
+.task-section,
+.pomodoro-section {
+    background: #ffffff;
+    border: 1px solid #e9ddff;
+    box-shadow: 0 8px 28px #5140b810;
+}
+
+/* Progress bar */
+.progress-track {
+    background: #e9d5ff;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #a78bfa, #7c3aed, #4f46e5);
+}
+
+/* Add-task button */
+#taskForm button {
+    background: linear-gradient(135deg, #8b5cf6, #5b21b6);
+    color: white;
+    box-shadow: 0 4px 12px #7c3aed35;
+}
+
+#taskForm button:hover {
+    background: linear-gradient(135deg, #7c3aed, #4338ca);
+}
+
+/* Task rows */
+.task-item {
+    background: linear-gradient(110deg, #faf5ff, #ffffff);
+    border: 1px solid #eadfff;
+    border-left: 4px solid #a78bfa;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 14px;
+}
+
+.task-item.completed {
+    background: #f0fdf4;
+    border-left-color: #22c55e;
+}
+
+/* Priority labels */
+.priority-label {
+    color: #7c3aed;
+    font-weight: 600;
+}
+
+/* Delete button */
+.delete-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+/* Pomodoro timer */
+.pomodoro-section {
+    background: linear-gradient(145deg, #ffffff, #f5f0ff);
+    border-top: 4px solid #8b5cf6;
+}
+
+.timer-display {
+    color: #7c3aed;
+}
+
+#switchTimer {
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+}
+
+#switchTimer:hover {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+}
+
+/* Filter buttons */
+.filter-btn {
+    background: #f3e8ff;
+    color: #6d28d9;
+    border-color: #ddd6fe;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: white;
+}
+
+/* Form fields */
+input[type="text"],
+input[type="date"],
+select {
+    background: #faf7ff;
+    border-color: #ddd6fe;
+}
+
+/* Selection and focus */
+input:focus,
+select:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px #8b5cf625;
+}
+
+
+/* Priority colors */
+.priority-label {
+    display: inline-block;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.priority-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Professional task card effects */
+.task-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 16px rgba(109, 40, 217, 0.10);
+}
+
+/* Better task title */
+.task-title {
+    color: #312e81;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Completed task appearance */
+.task-item.completed {
+    opacity: 0.8;
+    background: #f0fdf4;
+}
+
+/* Delete button interaction */
+.delete-btn {
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+    transform: scale(1.03);
+}
+
+/* Smooth buttons */
+button {
+    transition: all 0.2s ease;
+}
+
+/* Keyboard accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #8b5cf6;
+    outline-offset: 2px;
+}
+
+/* ===== Pomodoro Timer Upgrade ===== */
+
+.pomodoro-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f0ff, #eef2ff, #ffffff);
+    border: 1px solid #ddd6fe;
+    border-top: 4px solid #7c3aed;
+    text-align: center;
+}
+
+/* Timer mode label */
+#timerMode {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #ede9fe;
+    color: #6d28d9;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Large digital timer */
+.timer-display {
+    display: inline-block;
+    min-width: 230px;
+    padding: 18px 28px;
+    margin: 18px auto 24px;
+    border-radius: 20px;
+    background: #ffffff;
+    color: #6d28d9;
+    border: 1px solid #e9ddff;
+    box-shadow: 0 8px 25px rgba(109, 40, 217, 0.12);
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Timer controls */
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+#startTimer {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: #ffffff;
+}
+
+#pauseTimer,
+#resetTimer {
+    background: #ede9fe;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+}
+
+#switchTimer {
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    color: #ffffff;
+}
+
+/* Timer button hover effects */
+#startTimer:hover,
+#switchTimer:hover {
+    filter: brightness(0.94);
+}
+
+#pauseTimer:hover,
+#resetTimer:hover {
+    background: #ddd6fe;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+    .timer-display {
+        min-width: 0;
+        width: 100%;
+        padding: 16px 10px;
+        letter-spacing: 2px;
+    }
+
+    .timer-buttons button {
+        flex: 1;
+    }
+}
+
+
+/* Dark mode toggle button */
+#themeToggle {
+    margin-top: 12px;
+    background: #ede9fe;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
+}
+
+/* Dark theme */
+body.dark-mode {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark-mode header h1 {
+    color: #c4b5fd;
+}
+
+body.dark-mode header p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .stat-card,
+body.dark-mode .progress-section,
+body.dark-mode .task-section,
+body.dark-mode .pomodoro-section {
+    background: #1f2937;
+    border-color: #374151;
+    color: #e5e7eb;
+    box-shadow: 0 6px 20px #00000020;
+}
+
+body.dark-mode h2,
+body.dark-mode .task-title {
+    color: #e5e7eb;
+}
+
+body.dark-mode .stat-card h3,
+body.dark-mode #progressText,
+body.dark-mode #timerMode {
+    color: #cbd5e1;
+}
+
+body.dark-mode .task-item {
+    background: #273449;
+    border-color: #374151;
+}
+
+body.dark-mode .task-item.completed {
+    background: #163629;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="date"],
+body.dark-mode select {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.dark-mode .timer-display {
+    background: #111827;
+    color: #c4b5fd;
+    border-color: #4b5563;
+}
+
+body.dark-mode .progress-track {
+    background: #374151;
+}
+
+body.dark-mode #themeToggle {
+    background: #374151;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.dark-mode .filter-btn {
+    background: #374151;
+    color: #ddd6fe;
+    border-color: #4b5563;
+}
+
+body.dark-mode .filter-btn.active {
+    background: #7c3aed;
+    color: white;
+}
+
+/* Fix Pomodoro labels in dark mode */
+body.dark-mode #timerMode {
+    background: #312e81;
+    color: #ddd6fe;
+    border: 1px solid #4c1d95;
+    border-radius: 20px;
+    padding: 6px 16px;
+}
+
+/* Keep the timer text readable */
+body.dark-mode .timer-display {
+    background: #111827;
+    color: #c4b5fd;
+    border-color: #4b5563;
+}
+
+/* Fix the timer control buttons */
+body.dark-mode #startTimer {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+body.dark-mode #pauseTimer,
+body.dark-mode #resetTimer {
+    background: #374151;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.dark-mode #switchTimer {
+    background: #4338ca;
+    color: #ffffff;
+}
+
+
+/* ===== Responsive Layout Upgrade ===== */
+
+/* Better desktop layout */
+.container {
+    width: min(100% - 40px, 1100px);
+    max-width: 1100px;
+    margin: 32px auto;
+}
+
+header {
+    margin-bottom: 32px;
+}
+
+.stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.stat-card,
+.progress-section,
+.task-section,
+.pomodoro-section {
+    min-width: 0;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+    .container {
+        width: calc(100% - 32px);
+        margin: 24px auto;
+    }
+
+    .stats {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 18px 12px;
+    }
+
+    .progress-section,
+    .task-section,
+    .pomodoro-section {
+        padding: 20px;
+    }
+
+    .task-item {
+        gap: 10px;
+    }
+
+    .timer-display {
+        max-width: 100%;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    body {
+        padding: 12px 0;
+    }
+
+    .container {
+        width: calc(100% - 24px);
+        margin: 12px auto;
+    }
+
+    header {
+        margin-bottom: 22px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        overflow-wrap: anywhere;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .stat-card {
+        padding: 14px 5px;
+        border-radius: 12px;
+    }
+
+    .stat-card h3 {
+        font-size: 11px;
+        overflow-wrap: anywhere;
+    }
+
+    .stat-card p {
+        font-size: 1.4rem;
+    }
+
+    .progress-section,
+    .task-section,
+    .pomodoro-section {
+        padding: 16px;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .progress-heading {
+        align-items: flex-start;
+    }
+
+    .task-filters {
+        gap: 7px;
+    }
+
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .task-item {
+        align-items: flex-start;
+        gap: 9px;
+        padding: 12px 9px;
+    }
+
+    .task-item input[type="checkbox"] {
+        margin-top: 4px;
+    }
+
+    .task-details {
+        min-width: 0;
+    }
+
+    .delete-btn {
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .timer-display {
+        width: 100%;
+        min-width: 0;
+        padding: 16px 8px;
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+        letter-spacing: 1px;
+    }
+
+    .timer-buttons {
+        gap: 8px;
+    }
+
+    .timer-buttons button {
+        flex: 1 1 75px;
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    #switchTimer {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    #themeToggle {
+        max-width: 100%;
+    }
+}
+
+/* Prevent awkward horizontal overflow */
+img,
+input,
+select,
+button {
+    max-width: 100%;
+}
+
+.task-title,
+.priority-label,
+.due-date {
+    overflow-wrap: anywhere;
+}
+
+/* ===== FocusBoard: Complete Dark Mode Fix ===== */
+
+body.dark-mode {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* Header */
+body.dark-mode header h1 {
+    color: #c4b5fd;
+}
+
+body.dark-mode header p {
+    color: #94a3b8;
+}
+
+/* Dashboard cards */
+body.dark-mode .stat-card,
+body.dark-mode .progress-section,
+body.dark-mode .task-section,
+body.dark-mode .pomodoro-section {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-color: #334155;
+    box-shadow: 0 6px 20px #00000025;
+}
+
+/* Headings and statistics */
+body.dark-mode h2,
+body.dark-mode .task-title {
+    color: #f1f5f9;
+}
+
+body.dark-mode .stat-card h3,
+body.dark-mode #progressText,
+body.dark-mode #timerMode {
+    color: #cbd5e1;
+}
+
+body.dark-mode .stat-card p,
+body.dark-mode #progressPercent {
+    color: #c4b5fd;
+}
+
+/* Task rows */
+body.dark-mode .task-item {
+    background: #273449;
+    border-color: #475569;
+    border-left-color: #8b5cf6;
+}
+
+body.dark-mode .task-item.completed {
+    background: #163629;
+    border-left-color: #22c55e;
+}
+
+body.dark-mode .task-item.completed .task-title {
+    color: #94a3b8;
+}
+
+/* Priority labels */
+body.dark-mode .priority-high {
+    background: #451a1a;
+    color: #fca5a5;
+}
+
+body.dark-mode .priority-medium {
+    background: #422006;
+    color: #fcd34d;
+}
+
+body.dark-mode .priority-low {
+    background: #14532d;
+    color: #86efac;
+}
+
+/* Due dates */
+body.dark-mode .due-date {
+    color: #cbd5e1;
+}
+
+body.dark-mode .due-date.overdue {
+    color: #fca5a5;
+}
+
+/* Form fields */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="date"],
+body.dark-mode select {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #475569;
+    color-scheme: dark;
+}
+
+body.dark-mode input::placeholder {
+    color: #94a3b8;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px #8b5cf633;
+}
+
+/* Filter buttons */
+body.dark-mode .filter-btn {
+    background: #334155;
+    color: #e2e8f0;
+    border-color: #475569;
+}
+
+body.dark-mode .filter-btn:hover {
+    background: #475569;
+}
+
+body.dark-mode .filter-btn.active {
+    background: #7c3aed;
+    color: #ffffff;
+    border-color: #8b5cf6;
+}
+
+/* Progress bar */
+body.dark-mode .progress-track {
+    background: #334155;
+}
+
+body.dark-mode .progress-fill {
+    background: linear-gradient(90deg, #a78bfa, #7c3aed);
+}
+
+/* Pomodoro timer */
+body.dark-mode .timer-display {
+    background: #0f172a;
+    color: #c4b5fd;
+    border-color: #475569;
+}
+
+body.dark-mode #startTimer {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+body.dark-mode #pauseTimer,
+body.dark-mode #resetTimer {
+    background: #334155;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+body.dark-mode #switchTimer {
+    background: #4338ca;
+    color: #ffffff;
+}
+
+body.dark-mode #themeToggle {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+/* Delete button */
+body.dark-mode .delete-btn {
+    background: #451a1a;
+    color: #fca5a5;
+    border-color: #7f1d1d;
+}
+
+body.dark-mode .delete-btn:hover {
+    background: #7f1d1d;
+}
+
+/* Empty task message */
+body.dark-mode #emptyMessage {
+    color: #94a3b8;
+}
+
+/* Keyboard focus */
+body.dark-mode button:focus-visible,
+body.dark-mode input:focus-visible,
+body.dark-mode select:focus-visible {
+    outline-color: #c4b5fd;
+}
+
+/* Daily Study Goal */
+.study-goal-section {
+    background: linear-gradient(135deg, #ffffff, #f5f0ff);
+    border: 1px solid #e4d7ff;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(49, 46, 129, 0.06);
+}
+
+.study-goal-section h2 {
+    margin-top: 0;
+    color: #6d28d9;
+}
+
+.study-goal-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #6b6485;
+    font-size: 14px;
+}
+
+.goal-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.goal-input-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+    background: #faf9ff;
+    color: #252044;
+    font: inherit;
+}
+
+#studyTimeText {
+    font-weight: 600;
+    color: #5b21b6;
+}
+
+#studyGoalStatus {
+    color: #6b6485;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+#studyGoalProgress {
+    width: 0%;
+}
+
+@media (max-width: 480px) {
+    .study-goal-section {
+        padding: 16px;
+    }
+
+    .goal-input-row {
+        flex-direction: column;
+    }
+
+    .goal-input-row button {
+        width: 100%;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode .study-goal-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .study-goal-section h2,
+body.dark-mode #studyTimeText {
+    color: #c4b5fd;
+}
+
+body.dark-mode .study-goal-section label,
+body.dark-mode #studyGoalStatus {
+    color: #cbd5e1;
+}
+
+body.dark-mode .goal-input-row input {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #475569;
+    color-scheme: dark;
+}
+
+/* ===== 7-Day Study History ===== */
+.study-history-section {
+    background: #ffffff;
+    border: 1px solid #e4d7ff;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(49, 46, 129, 0.06);
+}
+
+.study-history-section h2 {
+    margin-top: 0;
+    color: #6d28d9;
+}
+
+.study-history-section > p {
+    color: #6b6485;
+    font-size: 14px;
+}
+
+.study-history {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.study-day {
+    min-width: 0;
+    text-align: center;
+}
+
+.study-day-bar-area {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.study-day-time {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6d28d9;
+    overflow-wrap: anywhere;
+}
+
+.study-day-bar {
+    width: min(100%, 34px);
+    min-height: 4px;
+    background: linear-gradient(180deg, #a78bfa, #6d28d9);
+    border-radius: 8px 8px 3px 3px;
+    transition: height 0.3s ease;
+}
+
+.study-day-label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #6b6485;
+}
+
+body.dark-mode .study-history-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .study-history-section h2,
+body.dark-mode .study-day-time {
+    color: #c4b5fd;
+}
+
+body.dark-mode .study-history-section > p,
+body.dark-mode .study-day-label {
+    color: #cbd5e1;
+}
+
+body.dark-mode .study-day-bar {
+    background: linear-gradient(180deg, #c4b5fd, #7c3aed);
+}
+
+@media (max-width: 480px) {
+    .study-history-section {
+        padding: 16px 10px;
+    }
+
+    .study-history {
+        gap: 5px;
+    }
+
+    .study-day-time,
+    .study-day-label {
+        font-size: 10px;
+    }
+
+    .study-day-bar-area {
+        height: 120px;
+    }
+}

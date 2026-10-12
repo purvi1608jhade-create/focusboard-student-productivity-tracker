@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Productivity Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>FocusBoard</h1>
+            <p>Small steps make big progress.</p>
+            <button type="button" id="themeToggle">
+    🌙 Dark Mode
+</button>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Total Tasks</h3>
+                <p id="totalTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <p id="completedTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <p id="pendingTasks">0</p>
+            </div>
+        </section>
+
+<section class="progress-section">
+    <div class="progress-heading">
+        <h2>Overall Progress</h2>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Task completion progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progressBar"
+    >
+        <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <p id="progressText">0 of 0 tasks completed</p>
+</section>
+
+<!-- Daily Study Goal -->
+<section class="study-goal-section">
+    <h2>🎯 Daily Study Goal</h2>
+
+    <label for="dailyGoalHours">Your target (hours per day)</label>
+    <div class="goal-input-row">
+        <input
+            type="number"
+            id="dailyGoalHours"
+            min="0.5"
+            max="24"
+            step="0.5"
+            value="2"
+        >
+        <button type="button" id="saveStudyGoal">Save Goal</button>
+    </div>
+
+    <p id="studyTimeText">Studied 0 minutes today</p>
+
+    <div class="progress-track">
+        <div id="studyGoalProgress" class="progress-fill"></div>
+    </div>
+
+    <p id="studyGoalStatus">0% of your daily goal completed</p>
+</section>
+
+<!-- 7-Day Study History -->
+<section class="study-history-section">
+    <h2>📊 Last 7 Days</h2>
+    <p>Your daily study time</p>
+
+    <div id="studyHistory" class="study-history">
+        <!-- Daily bars will be added by JavaScript -->
+    </div>
+</section>
+
+        <section class="task-section">
+            
+<h2>My Tasks</h2>
+
+<div class="task-filters" role="group" aria-label="Filter tasks">
+    <button type="button" class="filter-btn active"
+        data-filter="all" aria-pressed="true">
+        All
+    </button>
+
+    <button type="button" class="filter-btn"
+        data-filter="pending" aria-pressed="false">
+        Pending
+    </button>
+
+    <button type="button" class="filter-btn"
+        data-filter="completed" aria-pressed="false">
+        Completed
+    </button>
+</div>
+
+<section class="pomodoro-section">
+    <h2>Pomodoro Study Timer</h2>
+
+    <p id="timerMode">Study Time</p>
+    <div id="timerDisplay" class="timer-display">25:00</div>
+
+    <div class="timer-buttons">
+        <button type="button" id="startTimer">Start</button>
+        <button type="button" id="pauseTimer">Pause</button>
+        <button type="button" id="resetTimer">Reset</button>
+    </div>
+
+    <button type="button" id="switchTimer">Switch to Break</button>
+</section>
+
+<form id="taskForm">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What do you need to do?"
+                    maxlength="150"
+                    required
+                >
+
+                <select id="priority">
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium" selected>Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+
+<label for="taskDueDate">Due Date</label>
+<input type="date" id="taskDueDate" name="taskDueDate">
+
+                <button type="submit">+ Add Task</button>
+            </form>
+
+            <ul id="taskList"></ul>
+
+            <p id="emptyMessage">No tasks yet. Add your first task!</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
